@@ -1,0 +1,137 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Dashboard page";
+    ViewData["breadcrumb"] = "Dashboard";
+    ViewData["breadcrumb-item"] = "dashboard";
+
+}
+<div class="row">
+    <!-- Total Students Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Students
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalStudents</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Courses Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total Courses
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalCourses</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-book fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Enrollments Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Total Enrollments
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalEnrollments</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Students Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Active Students
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.ActiveStudents</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Quick Actions</h6>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a href="@Url.Action("Add", "Student")" class="list-group-item list-group-item-action">
+                            <i class="fas fa-user-plus"></i> Add New Student
+                        </a>
+                        <a href="@Url.Action("Add", "Course")" class="list-group-item list-group-item-action">
+                            <i class="fas fa-book-medical"></i> Add New Course
+                        </a>
+                    }
+                    <a href="@Url.Action("Index", "Student")" class="list-group-item list-group-item-action">
+                        <i class="fas fa-list"></i> View All Students
+                    </a>
+                    <a href="@Url.Action("Index", "Course")" class="list-group-item list-group-item-action">
+                        <i class="fas fa-list"></i> View All Courses
+                    </a>
+                    @if (User.IsInRole("Student"))
+                    {
+                        <a href="@Url.Action("Index", "MyCourses")" class="list-group-item list-group-item-action">
+                            <i class="fas fa-book"></i> My Courses
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">System Statistics</h6>
+            </div>
+            <div class="card-body">
+                <p><strong>Active Courses:</strong> @ViewBag.ActiveCourses</p>
+                <p><strong>Total Students:</strong> @ViewBag.TotalStudents</p>
+                <p><strong>Total Enrollments:</strong> @ViewBag.TotalEnrollments</p>
+                <hr>
+                <small class="text-muted">Last updated: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</small>
+            </div>
+        </div>
+    </div>
+</div>

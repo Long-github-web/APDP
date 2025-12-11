@@ -1,0 +1,75 @@
+@model IEnumerable<SIMS.SimsDbContext.Entities.Course>
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "My Courses";
+    ViewData["breadcrumb"] = "My Courses";
+    ViewData["breadcrumb-item"] = "Enrolled Courses";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12">
+            <h2><i class="fas fa-book"></i> My Enrolled Courses</h2>
+            <p class="text-muted">View all courses you are currently enrolled in.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            @if (Model != null && Model.Any())
+            {
+                <div class="row">
+                    @foreach (var course in Model)
+                    {
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">@course.CourseCode</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title">@course.CourseName</h6>
+                                    <p class="card-text text-muted small">
+                                        @if (!string.IsNullOrEmpty(course.Description))
+                                        {
+                                            @(course.Description.Length > 100 ? course.Description.Substring(0, 100) + "..." : course.Description)
+                                        }
+                                        else
+                                        {
+                                            <span>No description available.</span>
+                                        }
+                                    </p>
+                                    <ul class="list-unstyled mb-0">
+                                        <li><strong>Credits:</strong> @(course.Credits ?? 0)</li>
+                                        <li><strong>Department:</strong> @(course.Department ?? "N/A")</li>
+                                        <li>
+                                            <strong>Status:</strong> 
+                                            <span class="badge @(course.Status == "Active" ? "bg-success" : "bg-secondary")">
+                                                @course.Status
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> 
+                    @if (!string.IsNullOrEmpty(ViewBag.Message))
+                    {
+                        @ViewBag.Message
+                    }
+                    else
+                    {
+                        <text>You are not enrolled in any courses yet.</text>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

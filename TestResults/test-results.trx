@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="1a1d37b9-9cae-4f73-a6dc-546485b241d5" name="Admin@ADMIN-PC 2025-12-05 03:17:08" runUser="ADMIN-PC\Admin" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-12-05T03:17:08.6433589+07:00" queuing="2025-12-05T03:17:08.6433594+07:00" start="2025-12-05T03:17:07.6397904+07:00" finish="2025-12-05T03:17:09.0056809+07:00" />
+  <TestSettings name="default" id="1155bd14-6337-4c93-a39d-1ca4aaf7c501">
+    <Deployment runDeploymentRoot="Admin_ADMIN-PC_2025-12-05_03_17_08" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c361178a-3f50-4203-b349-3682ad97c9d9" testId="bc5b5247-89d6-d3af-4dd6-4e292c9ed5d3" testName="SIMS.Tests.StudentServiceTests.CreateStudentAsync_DuplicateStudentCode_ThrowsException" computerName="ADMIN-PC" duration="00:00:00.0007534" startTime="2025-12-05T03:17:08.6161650+07:00" endTime="2025-12-05T03:17:08.6161987+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c361178a-3f50-4203-b349-3682ad97c9d9" />
+    <UnitTestResult executionId="40629bd7-c767-4d56-8f11-d8f2612d10b6" testId="9ddb85e5-7d7d-a775-6bcf-73f5c3be1a29" testName="SIMS.Tests.CourseServiceTests.CreateCourseAsync_ValidData_ReturnsCourse" computerName="ADMIN-PC" duration="00:00:00.0019396" startTime="2025-12-05T03:17:08.3212848+07:00" endTime="2025-12-05T03:17:08.3213150+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="40629bd7-c767-4d56-8f11-d8f2612d10b6" />
+    <UnitTestResult executionId="e4fc75b9-6d0f-4ef4-897d-4136e7e24aeb" testId="d9d0e144-16fe-8770-e426-7633fd198e27" testName="SIMS.Tests.RepositoryIntegrationTests.StudentRepository_CreateStudentAsync_ThenGetStudentByUserIdAsync_ReturnsStudent" computerName="ADMIN-PC" duration="00:00:00.5729881" startTime="2025-12-05T03:17:08.2518577+07:00" endTime="2025-12-05T03:17:08.8268485+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4fc75b9-6d0f-4ef4-897d-4136e7e24aeb" />
+    <UnitTestResult executionId="c68aa6a0-d33e-45be-9ec7-4c0aba190b41" testId="5c10812e-3300-4fec-41c6-0191495d0aa5" testName="SIMS.Tests.StudentServiceTests.CreateStudentAsync_ValidData_ReturnsStudent" computerName="ADMIN-PC" duration="00:00:00.3394815" startTime="2025-12-05T03:17:08.2527583+07:00" endTime="2025-12-05T03:17:08.5931537+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c68aa6a0-d33e-45be-9ec7-4c0aba190b41" />
+    <UnitTestResult executionId="d57f6f28-a6a4-4ea7-9101-13987b00cb17" testId="2dcc95f5-0eed-dd43-5d65-5523d22da2df" testName="SIMS.Tests.StudentServiceTests.CreateStudentAsync_DuplicateUsername_ThrowsException" computerName="ADMIN-PC" duration="00:00:00.0015445" startTime="2025-12-05T03:17:08.5933169+07:00" endTime="2025-12-05T03:17:08.5946836+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d57f6f28-a6a4-4ea7-9101-13987b00cb17" />
+    <UnitTestResult executionId="90995b44-32ee-4dec-8d16-aefc74351500" testId="b1656068-f223-adba-b915-b2427e10a1f1" testName="SIMS.Tests.StudentServiceTests.CreateStudentAsync_InvalidEmail_ThrowsException" computerName="ADMIN-PC" duration="00:00:00.0011274" startTime="2025-12-05T03:17:08.6159837+07:00" endTime="2025-12-05T03:17:08.6160383+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90995b44-32ee-4dec-8d16-aefc74351500" />
+    <UnitTestResult executionId="8baaa4bc-fdc7-4c06-a4da-dc4b47eef5c6" testId="f43d0fff-9d28-b0d0-e154-a9fd93264510" testName="SIMS.Tests.RepositoryIntegrationTests.StudentCourseRepository_AssignStudentToCourseAsync_InsertsAndIncludesRelationships" computerName="ADMIN-PC" duration="00:00:00.1216576" startTime="2025-12-05T03:17:08.8369547+07:00" endTime="2025-12-05T03:17:08.9484170+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8baaa4bc-fdc7-4c06-a4da-dc4b47eef5c6" />
+    <UnitTestResult executionId="67224795-0359-4f1f-8242-394ebd174011" testId="08bd82ce-b3a0-d6ed-ffd1-ec3ed4393dd5" testName="SIMS.Tests.StudentServiceTests.CreateStudentAsync_MissingStudentCode_ThrowsException" computerName="ADMIN-PC" duration="00:00:00.0006435" startTime="2025-12-05T03:17:08.6162686+07:00" endTime="2025-12-05T03:17:08.6162997+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67224795-0359-4f1f-8242-394ebd174011" />
+    <UnitTestResult executionId="296d993a-278b-414a-aeb4-7d0810258952" testId="53ebd80c-cebe-728c-d72c-3f2693567360" testName="SIMS.Tests.CourseServiceTests.CreateCourseAsync_DuplicateCode_ThrowsException" computerName="ADMIN-PC" duration="00:00:00.0085449" startTime="2025-12-05T03:17:08.3213782+07:00" endTime="2025-12-05T03:17:08.3297298+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="296d993a-278b-414a-aeb4-7d0810258952" />
+    <UnitTestResult executionId="35668289-f0f1-450e-b6b3-1b1b88a0a1a7" testId="b4e8219f-8011-36e0-52dd-cb64a5abf93f" testName="SIMS.Tests.UserServiceTests.LoginUser_ValidCredentials_ReturnsUser" computerName="ADMIN-PC" duration="00:00:00.0550087" startTime="2025-12-05T03:17:08.2527407+07:00" endTime="2025-12-05T03:17:08.3140854+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="35668289-f0f1-450e-b6b3-1b1b88a0a1a7" />
+    <UnitTestResult executionId="7e94c0ec-7a66-4a97-87bf-84263810f03b" testId="b430f181-1b85-fa31-b0f7-7ad3527b4c81" testName="SIMS.Tests.StudentServiceTests.UpdateStudentAsync_ValidData_ReturnsUpdatedStudent" computerName="ADMIN-PC" duration="00:00:00.0018712" startTime="2025-12-05T03:17:08.6154466+07:00" endTime="2025-12-05T03:17:08.6155020+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7e94c0ec-7a66-4a97-87bf-84263810f03b" />
+    <UnitTestResult executionId="f790ded0-773a-4caa-914c-c5d55f58b88e" testId="1a4ed0eb-ab5c-3852-34b5-cf4863ab788b" testName="SIMS.Tests.CourseServiceTests.UpdateCourseAsync_ValidData_RetainsId" computerName="ADMIN-PC" duration="00:00:00.0072008" startTime="2025-12-05T03:17:08.3204730+07:00" endTime="2025-12-05T03:17:08.3211921+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f790ded0-773a-4caa-914c-c5d55f58b88e" />
+    <UnitTestResult executionId="ce61e106-42db-4ac5-96d6-60cd3bac2cbb" testId="d97ca6a7-8477-8aa8-c4c5-8f2e54e5873b" testName="SIMS.Tests.UserServiceTests.LoginUser_InvalidPassword_ReturnsNull" computerName="ADMIN-PC" duration="00:00:00.0012851" startTime="2025-12-05T03:17:08.3204900+07:00" endTime="2025-12-05T03:17:08.3205384+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ce61e106-42db-4ac5-96d6-60cd3bac2cbb" />
+    <UnitTestResult executionId="6df3d191-7eed-4cab-ab18-3ea6f56b5ee2" testId="90063d42-088b-18d3-2758-a7753298e1f7" testName="SIMS.Tests.CourseServiceTests.DeleteCourseAsync_NonExistent_ReturnsFalse" computerName="ADMIN-PC" duration="00:00:00.0578741" startTime="2025-12-05T03:17:08.2527069+07:00" endTime="2025-12-05T03:17:08.3118588+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6df3d191-7eed-4cab-ab18-3ea6f56b5ee2" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="SIMS.Tests.UserServiceTests.LoginUser_InvalidPassword_ReturnsNull" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="d97ca6a7-8477-8aa8-c4c5-8f2e54e5873b">
+      <Execution id="ce61e106-42db-4ac5-96d6-60cd3bac2cbb" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.UserServiceTests" name="LoginUser_InvalidPassword_ReturnsNull" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.CourseServiceTests.CreateCourseAsync_DuplicateCode_ThrowsException" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="53ebd80c-cebe-728c-d72c-3f2693567360">
+      <Execution id="296d993a-278b-414a-aeb4-7d0810258952" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.CourseServiceTests" name="CreateCourseAsync_DuplicateCode_ThrowsException" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.RepositoryIntegrationTests.StudentCourseRepository_AssignStudentToCourseAsync_InsertsAndIncludesRelationships" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="f43d0fff-9d28-b0d0-e154-a9fd93264510">
+      <Execution id="8baaa4bc-fdc7-4c06-a4da-dc4b47eef5c6" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.RepositoryIntegrationTests" name="StudentCourseRepository_AssignStudentToCourseAsync_InsertsAndIncludesRelationships" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.CourseServiceTests.UpdateCourseAsync_ValidData_RetainsId" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="1a4ed0eb-ab5c-3852-34b5-cf4863ab788b">
+      <Execution id="f790ded0-773a-4caa-914c-c5d55f58b88e" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.CourseServiceTests" name="UpdateCourseAsync_ValidData_RetainsId" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.StudentServiceTests.CreateStudentAsync_ValidData_ReturnsStudent" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="5c10812e-3300-4fec-41c6-0191495d0aa5">
+      <Execution id="c68aa6a0-d33e-45be-9ec7-4c0aba190b41" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.StudentServiceTests" name="CreateStudentAsync_ValidData_ReturnsStudent" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.StudentServiceTests.CreateStudentAsync_DuplicateUsername_ThrowsException" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="2dcc95f5-0eed-dd43-5d65-5523d22da2df">
+      <Execution id="d57f6f28-a6a4-4ea7-9101-13987b00cb17" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.StudentServiceTests" name="CreateStudentAsync_DuplicateUsername_ThrowsException" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.StudentServiceTests.CreateStudentAsync_InvalidEmail_ThrowsException" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="b1656068-f223-adba-b915-b2427e10a1f1">
+      <Execution id="90995b44-32ee-4dec-8d16-aefc74351500" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.StudentServiceTests" name="CreateStudentAsync_InvalidEmail_ThrowsException" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.CourseServiceTests.DeleteCourseAsync_NonExistent_ReturnsFalse" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="90063d42-088b-18d3-2758-a7753298e1f7">
+      <Execution id="6df3d191-7eed-4cab-ab18-3ea6f56b5ee2" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.CourseServiceTests" name="DeleteCourseAsync_NonExistent_ReturnsFalse" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.RepositoryIntegrationTests.StudentRepository_CreateStudentAsync_ThenGetStudentByUserIdAsync_ReturnsStudent" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="d9d0e144-16fe-8770-e426-7633fd198e27">
+      <Execution id="e4fc75b9-6d0f-4ef4-897d-4136e7e24aeb" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.RepositoryIntegrationTests" name="StudentRepository_CreateStudentAsync_ThenGetStudentByUserIdAsync_ReturnsStudent" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.UserServiceTests.LoginUser_ValidCredentials_ReturnsUser" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="b4e8219f-8011-36e0-52dd-cb64a5abf93f">
+      <Execution id="35668289-f0f1-450e-b6b3-1b1b88a0a1a7" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.UserServiceTests" name="LoginUser_ValidCredentials_ReturnsUser" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.CourseServiceTests.CreateCourseAsync_ValidData_ReturnsCourse" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="9ddb85e5-7d7d-a775-6bcf-73f5c3be1a29">
+      <Execution id="40629bd7-c767-4d56-8f11-d8f2612d10b6" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.CourseServiceTests" name="CreateCourseAsync_ValidData_ReturnsCourse" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.StudentServiceTests.CreateStudentAsync_DuplicateStudentCode_ThrowsException" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="bc5b5247-89d6-d3af-4dd6-4e292c9ed5d3">
+      <Execution id="c361178a-3f50-4203-b349-3682ad97c9d9" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.StudentServiceTests" name="CreateStudentAsync_DuplicateStudentCode_ThrowsException" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.StudentServiceTests.UpdateStudentAsync_ValidData_ReturnsUpdatedStudent" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="b430f181-1b85-fa31-b0f7-7ad3527b4c81">
+      <Execution id="7e94c0ec-7a66-4a97-87bf-84263810f03b" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.StudentServiceTests" name="UpdateStudentAsync_ValidData_ReturnsUpdatedStudent" />
+    </UnitTest>
+    <UnitTest name="SIMS.Tests.StudentServiceTests.CreateStudentAsync_MissingStudentCode_ThrowsException" storage="c:\users\admin\downloads\se07201_aspnetcoremvc-main\sims.tests\bin\debug\net8.0\sims.tests.dll" id="08bd82ce-b3a0-d6ed-ffd1-ec3ed4393dd5">
+      <Execution id="67224795-0359-4f1f-8242-394ebd174011" />
+      <TestMethod codeBase="C:\Users\Admin\Downloads\se07201_aspnetcoremvc-main\SIMS.Tests\bin\Debug\net8.0\SIMS.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SIMS.Tests.StudentServiceTests" name="CreateStudentAsync_MissingStudentCode_ThrowsException" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="bc5b5247-89d6-d3af-4dd6-4e292c9ed5d3" executionId="c361178a-3f50-4203-b349-3682ad97c9d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9ddb85e5-7d7d-a775-6bcf-73f5c3be1a29" executionId="40629bd7-c767-4d56-8f11-d8f2612d10b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d9d0e144-16fe-8770-e426-7633fd198e27" executionId="e4fc75b9-6d0f-4ef4-897d-4136e7e24aeb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c10812e-3300-4fec-41c6-0191495d0aa5" executionId="c68aa6a0-d33e-45be-9ec7-4c0aba190b41" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2dcc95f5-0eed-dd43-5d65-5523d22da2df" executionId="d57f6f28-a6a4-4ea7-9101-13987b00cb17" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b1656068-f223-adba-b915-b2427e10a1f1" executionId="90995b44-32ee-4dec-8d16-aefc74351500" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f43d0fff-9d28-b0d0-e154-a9fd93264510" executionId="8baaa4bc-fdc7-4c06-a4da-dc4b47eef5c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="08bd82ce-b3a0-d6ed-ffd1-ec3ed4393dd5" executionId="67224795-0359-4f1f-8242-394ebd174011" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53ebd80c-cebe-728c-d72c-3f2693567360" executionId="296d993a-278b-414a-aeb4-7d0810258952" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b4e8219f-8011-36e0-52dd-cb64a5abf93f" executionId="35668289-f0f1-450e-b6b3-1b1b88a0a1a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b430f181-1b85-fa31-b0f7-7ad3527b4c81" executionId="7e94c0ec-7a66-4a97-87bf-84263810f03b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1a4ed0eb-ab5c-3852-34b5-cf4863ab788b" executionId="f790ded0-773a-4caa-914c-c5d55f58b88e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d97ca6a7-8477-8aa8-c4c5-8f2e54e5873b" executionId="ce61e106-42db-4ac5-96d6-60cd3bac2cbb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90063d42-088b-18d3-2758-a7753298e1f7" executionId="6df3d191-7eed-4cab-ab18-3ea6f56b5ee2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="14" executed="14" passed="14" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.22)&#xD;
+[xUnit.net 00:00:00.18]   Discovering: SIMS.Tests&#xD;
+[xUnit.net 00:00:00.21]   Discovered:  SIMS.Tests&#xD;
+[xUnit.net 00:00:00.23]   Starting:    SIMS.Tests&#xD;
+[xUnit.net 00:00:00.95]   Finished:    SIMS.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

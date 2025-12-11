@@ -1,0 +1,112 @@
+﻿@model SIMS.Models.CourseViewModel
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Course Details";
+    ViewData["breadcrumb"] = "Courses";
+    ViewData["breadcrumb-item"] = "Course Details";
+    var enrolledStudents = ViewBag.EnrolledStudents as IEnumerable<SIMS.SimsDbContext.Entities.Student> ?? new List<SIMS.SimsDbContext.Entities.Student>();
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Course Details</h2>
+                <a href="@Url.Action("Index", "Course")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-book"></i> Course Information</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Course Code:</dt>
+                        <dd class="col-sm-8">@Model.CourseCode</dd>
+                        <dt class="col-sm-4">Course Name:</dt>
+                        <dd class="col-sm-8">@Model.CourseName</dd>
+                        <dt class="col-sm-4">Description:</dt>
+                        <dd class="col-sm-8">@(Model.Description ?? "N/A")</dd>
+                        <dt class="col-sm-4">Credits:</dt>
+                        <dd class="col-sm-8">@Model.Credits</dd>
+                        <dt class="col-sm-4">Department:</dt>
+                        <dd class="col-sm-8">@(Model.Department ?? "N/A")</dd>
+                        <dt class="col-sm-4">Status:</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge @(Model.Status == "Active" ? "bg-success" : "bg-secondary")">@Model.Status</span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-users"></i> Enrolled Students (@enrolledStudents.Count())</h5>
+                </div>
+                <div class="card-body">
+                    @if (enrolledStudents.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Student Code</th>
+                                        <th>Full Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var student in enrolledStudents)
+                                    {
+                                        <tr>
+                                            <td>@student.StudentCode</td>
+                                            <td>@student.FullName</td>
+                                            <td>
+                                                <a href="@Url.Action("Details", "Student", new { id = student.Id })" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-eye"></i> View
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No students enrolled in this course.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0"><i class="fas fa-cog"></i> Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <a href="@Url.Action("Edit", "Course", new { id = Model.Id })" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Edit Course
+                        </a>
+                        <a href="@Url.Action("AssignStudents", "Course", new { id = Model.Id })" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Manage Students
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
