@@ -19,14 +19,18 @@ namespace SIMS.Repositories
 
         public async Task<Users?> GetUserByUsername(string username)
         {
-            return await _context.User.FirstOrDefaultAsync(u => u.Username == username);
+            return await _context.User
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Username == username);
         }
 
         public async Task<Users?> GetUserByEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
                 return null;
-            return await _context.User.FirstOrDefaultAsync(u => u.Email == email);
+            return await _context.User
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Email == email);
         }
 
         public async Task<IEnumerable<Users>> GetUsersByRoleAsync(string role)
@@ -55,10 +59,31 @@ namespace SIMS.Repositories
 
         public async Task<Users> UpdateUserAsync(Users user)
         {
+            // Check if entity is already being tracked
+            var existingUser = await _context.User.FindAsync(user.Id);
+            
+            if (existingUser != null)
+            {
+                // Entity is already tracked, update its properties
+                existingUser.Username = user.Username;
+                existingUser.Password = user.Password;
+                existingUser.Email = user.Email;
+                existingUser.Phone = user.Phone;
+                existingUser.Role = user.Role;
+                existingUser.Status = user.Status;
+                existingUser.UpdatedAt = DateTime.Now;
+                
+                await _context.SaveChangesAsync();
+                return existingUser;
+            }
+            else
+            {
+                // Entity is not tracked, attach and update
             user.UpdatedAt = DateTime.Now;
             _context.User.Update(user);
             await _context.SaveChangesAsync();
             return user;
+            }
         }
 
         public async Task<bool> DeleteUserAsync(int id)

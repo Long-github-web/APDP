@@ -74,12 +74,26 @@ namespace SIMS.Repositories
 
         public async Task<bool> DeleteStudentAsync(int id)
         {
+            // Check if student exists first
             var student = await _context.Students.FindAsync(id);
             if (student == null) return false;
 
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
-            return true;
+            // First, delete all StudentCourses related to this student using raw SQL
+            // This avoids OUTPUT clause conflict with database triggers
+            var deleteStudentCoursesSql = "DELETE FROM StudentCourses WHERE StudentId = @StudentId";
+            var studentIdParam = new Microsoft.Data.SqlClient.SqlParameter("@StudentId", id);
+            await _context.Database.ExecuteSqlRawAsync(deleteStudentCoursesSql, studentIdParam);
+
+            // Then delete the student itself using raw SQL
+            // Use raw SQL to avoid OUTPUT clause conflict with database triggers
+            // SQL Server doesn't allow OUTPUT clause when triggers exist on the table
+            var deleteStudentSql = "DELETE FROM Students WHERE Id = @Id";
+            var idParam = new Microsoft.Data.SqlClient.SqlParameter("@Id", id);
+            
+            // Execute SQL delete without OUTPUT clause
+            var rowsAffected = await _context.Database.ExecuteSqlRawAsync(deleteStudentSql, idParam);
+            
+            return rowsAffected > 0;
         }
 
         public async Task<bool> StudentExistsAsync(int id)

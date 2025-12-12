@@ -96,9 +96,25 @@ namespace SIMS.Repositories
 
         public async Task<bool> UpdateStudentCourseAsync(StudentCourse studentCourse)
         {
-            _context.StudentCourses.Update(studentCourse);
-            await _context.SaveChangesAsync();
-            return true;
+            // Use raw SQL to avoid OUTPUT clause conflict with database triggers
+            // SQL Server doesn't allow OUTPUT clause when triggers exist on the table
+            var sql = @"
+                UPDATE StudentCourses 
+                SET Grade = @Grade, 
+                    Status = @Status
+                WHERE StudentId = @StudentId AND CourseId = @CourseId";
+            
+            // Use parameterized query to avoid SQL injection
+            var studentIdParam = new Microsoft.Data.SqlClient.SqlParameter("@StudentId", studentCourse.StudentId);
+            var courseIdParam = new Microsoft.Data.SqlClient.SqlParameter("@CourseId", studentCourse.CourseId);
+            var gradeParam = new Microsoft.Data.SqlClient.SqlParameter("@Grade", (object?)studentCourse.Grade ?? DBNull.Value);
+            var statusParam = new Microsoft.Data.SqlClient.SqlParameter("@Status", studentCourse.Status ?? "Enrolled");
+            
+            // Execute SQL update without OUTPUT clause
+            var rowsAffected = await _context.Database.ExecuteSqlRawAsync(sql, 
+                studentIdParam, courseIdParam, gradeParam, statusParam);
+            
+            return rowsAffected > 0;
         }
 
         public async Task<bool> IsStudentEnrolledAsync(int studentId, int courseId)

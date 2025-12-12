@@ -46,7 +46,6 @@
                             <select asp-for="Role" class="form-select" required>
                                 <option value="Admin">Admin</option>
                                 <option value="Student">Student</option>
-                                <option value="Falculty">Faculty</option>
                             </select>
                             <span asp-validation-for="Role" class="text-danger"></span>
                         </div>
@@ -78,6 +77,9 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
 
 
 

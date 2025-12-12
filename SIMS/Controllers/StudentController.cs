@@ -11,11 +11,13 @@ namespace SIMS.Controllers
     {
         private readonly IStudentService _studentService;
         private readonly IActivityLogService _activityLogService;
+        private readonly IUserRepository _userRepository;
 
-        public StudentController(IStudentService studentService, IActivityLogService activityLogService)
+        public StudentController(IStudentService studentService, IActivityLogService activityLogService, IUserRepository userRepository)
         {
             _studentService = studentService;
             _activityLogService = activityLogService;
+            _userRepository = userRepository;
         }
 
         [Authorize(Roles = "Admin, Student, Falculty")]
@@ -249,6 +251,127 @@ namespace SIMS.Controllers
             };
 
             ViewBag.Courses = courses;
+            return View(model);
+        }
+
+        [Authorize(Roles = "Student")]
+        [HttpGet]
+        public async Task<IActionResult> EditProfile()
+        {
+            var username = User.Identity?.Name;
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            // Get current user's student record
+            var user = await _userRepository.GetUserByUsername(username);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var student = await _studentService.GetStudentByUserIdAsync(user.Id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            var model = new StudentProfileViewModel
+            {
+                Id = student.Id,
+                StudentId = student.StudentCode ?? student.StudentId ?? "",
+                FullName = student.FullName ?? "",
+                Email = student.Email,
+                DateOfBirth = student.DateOfBirth,
+                Gender = student.Gender,
+                Address = student.Address,
+                Phone = student.Phone
+            };
+
+            return View(model);
+        }
+
+        [Authorize(Roles = "Student")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile(StudentProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Verify that the student is editing their own profile
+                    var username = User.Identity?.Name;
+                    if (string.IsNullOrEmpty(username))
+                    {
+                        return RedirectToAction("Index", "Login");
+                    }
+
+                    var user = await _userRepository.GetUserByUsername(username);
+                    if (user == null)
+                    {
+                        return NotFound();
+                    }
+
+                    var student = await _studentService.GetStudentByUserIdAsync(user.Id);
+                    if (student == null || student.Id != model.Id)
+                    {
+                        ModelState.AddModelError("", "You can only edit your own profile.");
+                        return View(model);
+                    }
+
+                    // Update only basic information
+                    await _studentService.UpdateStudentBasicInfoAsync(
+                        model.Id,
+                        model.DateOfBirth,
+                        model.Gender,
+                        model.Address,
+                        model.Phone
+                    );
+
+                    // Log activity
+                    var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+                    await _activityLogService.LogActivityAsync(
+                        null,
+                        username,
+                        "Update",
+                        "StudentProfile",
+                        student.Id,
+                        $"Updated personal information",
+                        ipAddress
+                    );
+
+                    TempData["SuccessMessage"] = "Profile updated successfully!";
+                    return RedirectToAction(nameof(EditProfile));
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", $"An error occurred: {ex.Message}");
+                }
+            }
+
+            // Reload read-only fields
+            var usernameReload = User.Identity?.Name;
+            if (!string.IsNullOrEmpty(usernameReload))
+            {
+                var userReload = await _userRepository.GetUserByUsername(usernameReload);
+                if (userReload != null)
+                {
+                    var studentReload = await _studentService.GetStudentByUserIdAsync(userReload.Id);
+                    if (studentReload != null)
+                    {
+                        model.StudentId = studentReload.StudentCode ?? studentReload.StudentId ?? "";
+                        model.FullName = studentReload.FullName ?? "";
+                        model.Email = studentReload.Email;
+                    }
+                }
+            }
+
             return View(model);
         }
 

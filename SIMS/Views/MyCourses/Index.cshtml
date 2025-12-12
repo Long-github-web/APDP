@@ -1,57 +1,117 @@
-@model IEnumerable<SIMS.SimsDbContext.Entities.Course>
+@model dynamic
 @{
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     ViewData["Title"] = "My Courses";
     ViewData["breadcrumb"] = "My Courses";
-    ViewData["breadcrumb-item"] = "Enrolled Courses";
+    ViewData["breadcrumb-item"] = "My Courses";
+    var studentCourses = ViewBag.StudentCourses as IEnumerable<SIMS.SimsDbContext.Entities.StudentCourse> ?? Enumerable.Empty<SIMS.SimsDbContext.Entities.StudentCourse>();
+    var gpa = ViewBag.GPA as decimal?;
+    var student = ViewBag.Student as SIMS.SimsDbContext.Entities.Student;
 }
 
 <div class="container-fluid">
     <div class="row mb-3">
         <div class="col-12">
             <h2><i class="fas fa-book"></i> My Enrolled Courses</h2>
-            <p class="text-muted">View all courses you are currently enrolled in.</p>
+            <p class="text-muted">View all courses you are currently enrolled in and your grades.</p>
         </div>
     </div>
 
+    <!-- GPA Summary Card -->
+    @if (student != null)
+    {
+        <div class="row mb-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-graduation-cap"></i> Current GPA</h5>
+                        <h2 class="mb-0">
+                            @if (gpa.HasValue)
+                            {
+                                <text>@gpa.Value.ToString("F2")</text>
+                            }
+                            else
+                            {
+                                <text>N/A</text>
+                            }
+                        </h2>
+                        <small>Based on graded courses</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-book"></i> Total Courses</h5>
+                        <h2 class="mb-0">@studentCourses.Count()</h2>
+                        <small>Enrolled courses</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-check-circle"></i> Graded Courses</h5>
+                        <h2 class="mb-0">@studentCourses.Count(sc => !string.IsNullOrEmpty(sc.Grade))</h2>
+                        <small>Courses with grades</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     <div class="row">
         <div class="col-12">
-            @if (Model != null && Model.Any())
+            @if (studentCourses.Any())
             {
-                <div class="row">
-                    @foreach (var course in Model)
-                    {
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="card h-100 shadow-sm">
+                <div class="card">
                                 <div class="card-header bg-primary text-white">
-                                    <h5 class="mb-0">@course.CourseCode</h5>
+                        <h5 class="mb-0"><i class="fas fa-list"></i> Course Details</h5>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-title">@course.CourseName</h6>
-                                    <p class="card-text text-muted small">
-                                        @if (!string.IsNullOrEmpty(course.Description))
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Course Code</th>
+                                        <th>Course Name</th>
+                                        <th>Credits</th>
+                                        <th>Grade</th>
+                                        <th>Status</th>
+                                        <th>Enrollment Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var sc in studentCourses)
+                                    {
+                                        <tr>
+                                            <td><strong>@sc.Course?.CourseCode</strong></td>
+                                            <td>@sc.Course?.CourseName</td>
+                                            <td>@(sc.Course?.Credits ?? 0)</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(sc.Grade))
                                         {
-                                            @(course.Description.Length > 100 ? course.Description.Substring(0, 100) + "..." : course.Description)
+                                                    <span class="badge @(sc.Grade.StartsWith("A") ? "bg-success" : sc.Grade.StartsWith("B") ? "bg-info" : sc.Grade.StartsWith("C") ? "bg-warning" : sc.Grade.StartsWith("D") ? "bg-secondary" : "bg-danger")">
+                                                        @sc.Grade
+                                                    </span>
                                         }
                                         else
                                         {
-                                            <span>No description available.</span>
-                                        }
-                                    </p>
-                                    <ul class="list-unstyled mb-0">
-                                        <li><strong>Credits:</strong> @(course.Credits ?? 0)</li>
-                                        <li><strong>Department:</strong> @(course.Department ?? "N/A")</li>
-                                        <li>
-                                            <strong>Status:</strong> 
-                                            <span class="badge @(course.Status == "Active" ? "bg-success" : "bg-secondary")">
-                                                @course.Status
+                                                    <span class="text-muted">Not graded</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <span class="badge @(sc.Status == "Enrolled" ? "bg-primary" : sc.Status == "Completed" ? "bg-success" : "bg-secondary")">
+                                                    @sc.Status
                                             </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                                            </td>
+                                            <td>@sc.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
-                    }
+                    </div>
                 </div>
             }
             else
